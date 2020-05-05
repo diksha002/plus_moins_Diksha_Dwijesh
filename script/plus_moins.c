@@ -99,6 +99,14 @@ int main()
 			printf("-----Joueur_1----- \n");
 			printf("Inserez le nombre d'essaie\n");
 			scanf("%d",&c);
+
+			while (c < 10)
+			{
+				printf("Inserez le nombre d'essaie plus grand ou egale a 10! \n");
+				printf("Veuillez re-inserez le nombre d'essaie\n");
+				scanf("%d",&c);
+			}
+
 			int count_joueur=c;
 			if(c >= 10)
 			{
@@ -123,44 +131,6 @@ int main()
 					}
 				}
 				while(choix_joueur != Valeur_a_trouver);
-				break;
-			}
-			else
-			{
-				do
-				{
-					printf("Inserez le nombre d'essaie plus grand ou egale a 10! \n");
-					printf("Veuillez re-inserez le nombre d'essaie\n");
-					scanf("%d",&c);
-					int count_joueur=c;
-					if(c >= 10)
-					{
-						//joueur_2
-						printf("-----Joueur_2----- \n");
-						do
-						{
-							printf("inserez une valeur: ");
-							scanf("%d",&choix_joueur);
-							count_joueur--;
-							plus_moins(choix_joueur,Valeur_a_trouver);
-							if(choix_joueur == Valeur_a_trouver)
-							{
-								count_joueur++;
-								printf("Votre score est: %d",count_joueur);
-								break;
-							}
-							if(count_joueur==0)
-							{
-								printf("oops!!!!!\n");
-								break;
-							}
-						}
-						while(choix_joueur != Valeur_a_trouver);
-						break;
-					}
-
-				}
-				while(c < 10);
 				break;
 			}
 			printf("Votre score est: %d\n",count_joueur);
