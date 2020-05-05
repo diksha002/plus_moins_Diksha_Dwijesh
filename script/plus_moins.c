@@ -36,53 +36,64 @@ int main()
 			printf("Inserez 1 pour facile, 2 pour moyenne et 3 pour difficile: \n");
 			int a;
 			scanf("%d",&a);
-			int count=0;
-			int count1=0;
-			switch(a)
+			int nombre_tour;
+			printf("Inserez le nombre de tour que vous voulez: \n");
+			scanf("%d",&nombre_tour);
+			for(int i = 0; i < nombre_tour; i++)
 			{
-				case 1:
-					do
+				srand (time(NULL));
+				int Valeur_a_trouver = rand() % 101;
+				int count=0;    //count for mode:medium
+				int count1=0;    //count for mode:hard
+				printf("------partie %d------- \n", i+1);
+				{
+					switch(a)
 					{
-						printf("inserez une valeur: ");
-						scanf("%d",&choix_joueur);
-						plus_moins(choix_joueur,Valeur_a_trouver);
-					}
-					while(choix_joueur != Valeur_a_trouver);
-					break;
-				case 2:
-					do
-					{
-						printf("inserez une valeur: ");
-						scanf("%d",&choix_joueur);
-						count++;
-						plus_moins(choix_joueur,Valeur_a_trouver);
-						if(count==25)
-						{
-							printf("Vous avez dépassé la limite d'essaie\n");
+						case 1:
+							while(choix_joueur != Valeur_a_trouver)
+							{
+								printf("inserez une valeur: \n");
+								scanf("%d",&choix_joueur);
+								plus_moins(choix_joueur,Valeur_a_trouver);
+							}
 							break;
-						}
-					}
-					while(choix_joueur != Valeur_a_trouver);
-					break;
-				case 3:
-					do
-					{
-						printf("inserez une valeur: ");
-						scanf("%d",&choix_joueur);
-						count1++;
-						plus_moins(choix_joueur,Valeur_a_trouver);
-						if(count1==10)
-						{
-							printf("Vous avez dépassé la limite d'essaie\n");
+						case 2:
+								while(choix_joueur != Valeur_a_trouver)
+								{
+									printf("inserez une valeur: \n");
+									scanf("%d",&choix_joueur);
+									count++;
+									plus_moins(choix_joueur,Valeur_a_trouver);
+									if(count==25)
+									{
+										printf("Vous avez depasser la limite\n");
+										break;
+									}
+								}
+								break;
+
+						case 3:
+							do
+							{
+								printf("inserez une valeur: \n");
+								scanf("%d",&choix_joueur);
+								count1++;
+								plus_moins(choix_joueur,Valeur_a_trouver);
+								if(count1==10)
+								{
+									printf("Vous avez dépassé la limite d'essaie\n");
+									break;
+								}
+							}
+							while(choix_joueur != Valeur_a_trouver);
 							break;
-						}
+						default:
+						printf("vous deviez choisir entre les 3 options disponible\n");
+						break;
 					}
-					while(choix_joueur != Valeur_a_trouver);
-					break;
-				default:
-				printf("vous deviez choisir entre les 3 options disponible\n");
-				break;
+				}
 			}
+			break;
 		case 2:
 			//Pour joueur_1
 			printf("-----Joueur_1----- \n");
@@ -102,14 +113,17 @@ int main()
 					if(choix_joueur == Valeur_a_trouver)
 					{
 						count_joueur++;
-						printf("Votre score est: %d",count_joueur);
+						printf("Votre score est: %d \n",count_joueur);
+						break;
+					}
+					if(count_joueur==0)
+					{
+						printf("Desoler\n");
 						break;
 					}
 				}
 				while(choix_joueur != Valeur_a_trouver);
 				break;
-				if(count_joueur==0)
-					break;
 			}
 			else
 			{
@@ -135,18 +149,21 @@ int main()
 								printf("Votre score est: %d",count_joueur);
 								break;
 							}
+							if(count_joueur==0)
+							{
+								printf("oops!!!!!\n");
+								break;
+							}
 						}
 						while(choix_joueur != Valeur_a_trouver);
 						break;
-						if(count_joueur==0)
-							break;
 					}
 
 				}
 				while(c < 10);
 				break;
 			}
-			printf("Votre score est: %d",count_joueur);
+			printf("Votre score est: %d\n",count_joueur);
 
 	}
 
