@@ -28,7 +28,7 @@ int main()
 	int b;
 	int c;
 	scanf("%d",&b);
-	int count_joueur=c;
+	int count_joueur;
 	switch(b)
 	{
 		case 1:
@@ -95,45 +95,98 @@ int main()
 			}
 			break;
 		case 2:
-			//Pour joueur_1
-			printf("-----Joueur_1----- \n");
+			//Initial step
+			printf("-----Mode 2 joueurs----- \n");
 			printf("Inserez le nombre d'essaie\n");
 			scanf("%d",&c);
-
+			int score_j1=0;  //score finale de joueur1
+			int score_j2=0;  //score finale de joueur2
+			
 			while (c < 10)
 			{
 				printf("Inserez le nombre d'essaie plus grand ou egale a 10! \n");
 				printf("Veuillez re-inserez le nombre d'essaie\n");
 				scanf("%d",&c);
 			}
-
-			int count_joueur=c;
-			if(c >= 10)
+			int nombre_tour1;
+			printf("Inserez le nombre de tour que vous voulez: \n");
+			scanf("%d",&nombre_tour1);
+			for(int i = 0; i < nombre_tour1; i++)
 			{
-				//joueur_2
-				printf("-----Joueur_2----- \n");
-				do
-				{
-					printf("inserez une valeur: \n");
-					scanf("%d",&choix_joueur);
-					count_joueur--;
-					plus_moins(choix_joueur,Valeur_a_trouver);
-					if(choix_joueur == Valeur_a_trouver)
+					printf("------partie %d------- \n", i+1);
+					int count_joueur=c;
+					int count_joueur1=c;
+					
+					if(c >= 10)
 					{
-						count_joueur++;
-						printf("Votre score est: %d \n",count_joueur);
-						break;
+						//joueur_1
+						printf("-----Joueur_1----- \n");
+						do
+						{
+							printf("inserez une valeur: \n");
+							scanf("%d",&choix_joueur);
+							count_joueur--;
+							plus_moins(choix_joueur,Valeur_a_trouver);
+							if(choix_joueur == Valeur_a_trouver)
+							{
+								count_joueur++;
+								printf("Votre score est: %d \n",count_joueur);
+								break;
+							}
+							if(count_joueur==0)
+							{
+								printf("Desoler, Vous avez depasser le nombre d'essaie. \n");
+								printf("Votre score est 0\n");					
+								break;
+							}
+						}
+						while(choix_joueur != Valeur_a_trouver);
+						score_j1 = score_j1 + count_joueur;
+						//joueur_2
+						srand (time(NULL));
+						int Valeur_a_trouver = rand() % 101; //deuxieme chiffre pour joueur_2
+						printf("-----Joueur_2----- \n");
+						do
+						{
+							printf("inserez une valeur: \n");
+							scanf("%d",&choix_joueur);
+							count_joueur1--;
+							plus_moins(choix_joueur,Valeur_a_trouver);
+							if(choix_joueur == Valeur_a_trouver)
+							{
+								count_joueur1++;
+								printf("Votre score est: %d \n",count_joueur1);
+								break;
+							}
+							if(count_joueur1==0)
+							{
+								printf("Desoler, Vous avez depasser le nombre d'essaie.\n");
+								printf("Votre score est 0\n");
+								break;
+							}
+						}
+						while(choix_joueur != Valeur_a_trouver);
+						score_j2 = score_j2 + count_joueur1; 
 					}
-					if(count_joueur==0)
-					{
-						printf("Desoler\n");
-						break;
-					}
-				}
-				while(choix_joueur != Valeur_a_trouver);
-				break;
+
+					printf("Le score joueur_1 est: %d\n",count_joueur);
+					printf("Le score joueur_2 est: %d\n",count_joueur1);
+			
 			}
-			printf("Votre score est: %d\n",count_joueur);
+			printf("score finale de j1= %d\n", score_j1);
+			printf("score finale de j2= %d\n", score_j2);
+			if(score_j1 > score_j2)
+			{
+				printf("Le gagnant est: ****JOUEUR 1*******\n");
+			}
+			else if (score_j1 == score_j2)
+			{
+				printf("C'est un match nul, PAS DE GAGNANT\n");
+			}
+			else
+			{
+				printf("Le gagnant est: ****JOUEUR 2*******\n");
+			}			
 
 	}
 
