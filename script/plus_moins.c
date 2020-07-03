@@ -23,7 +23,7 @@ int main()
 	srand (time(NULL));
 	int Valeur_a_trouver = rand() % 101;
 	int choix_joueur;
-	printf("\n     -^-^-^-^-^-^- Deviner le chiffre -^-^-^-^-^-^-\n");
+	printf("\n     -^-^-^-^-^-^- Deviner_le_chiffre -^-^-^-^-^-^-\n");
 	printf("\n");
 	printf("Choisissez votre mode joueur\n");
 	printf("1 joueur ou 2 joueurs\n");
